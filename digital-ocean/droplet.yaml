@@ -2,7 +2,7 @@ apiVersion: compute.do.crossplane.io/v1alpha1
 kind: Droplet
 metadata:
   annotations:
-    crossplane.io/external-name: crossplane-droplet
+    crossplane.io/external-name: crossplane-droplet3
   name: talks-to-code-demo
 spec:
   forProvider:
