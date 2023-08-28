@@ -7,7 +7,7 @@ metadata:
 spec:
   forProvider:
     region: nyc1
-    size: s-1vcpu-1gb
+    size: s-1vcpu-1gb-amd
     image: ubuntu-22-04-x64
   providerConfigRef:
     name: default
