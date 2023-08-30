@@ -27,7 +27,15 @@ helm upgrade --install \
     --wait
 ```
 
-Create secret with API token
+Para instalar el plugin de DigitalOcean provider en Crossplane
+
+```
+kubectl apply -f crossplane/provider-config.yml
+```
+
+
+## Creando un kubernetes secret con el API token de DigitalOcean
+Este paso, nos permitira conectar Crossplane con nuestra cuenta personal de DigitalOcean para habilitar el flujo de GitOps que viene en los proximos pasos:
 ```bash
 kubectl create secret generic digitalocean-creds --from-literal=access-token=[API-TOKEN] -n crossplane-systems
 ```
