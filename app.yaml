@@ -19,7 +19,6 @@ spec:
       selfHeal: true
       prune: true
     syncOptions:
-      - 'Replace=true'
       - '--force'
       - 'Prune=true'
     retry:
@@ -28,4 +27,3 @@ spec:
         duration: 15s
         factor: 2
         maxDuration: 3m
-
