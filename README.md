@@ -35,7 +35,7 @@ kubectl create secret generic digitalocean-creds --from-literal=access-token=[AP
 
 ### Instalando ArgoCD
 ```bash
-kubectl create namespace argocd; kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl kustomize argo-deployment/ | kubectl apply -f -
 ```
 
 En el repo, cuento con un app.yaml y un project.yaml custom, donde le indico a Argo en que repositorio observar mis cambios. Despues de inspeccionar estos archivos yaml, hagamos kubectl apply para crear la app y el proyecto.
