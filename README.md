@@ -43,3 +43,8 @@ export PASS=$(kubectl \
 kubectl apply -f app.yaml
 kubectl apply -f project.yaml
 ```
+
+
+
+## Digital Ocean API slugs
+https://slugs.do-api.dev/
