@@ -46,11 +46,6 @@ kubectl create secret generic digitalocean-creds --from-literal=access-token=[AP
 kubectl kustomize argo-deployment/ | kubectl apply -f -
 ```
 
-En el repo, cuento con un app.yaml y un project.yaml custom, donde le indico a Argo en que repositorio observar mis cambios. Despues de inspeccionar estos archivos yaml, hagamos kubectl apply para crear la app y el proyecto.
-```bash
-kubectl apply -f app.yaml
-kubectl apply -f project.yaml
-```
 
 Obtenemos el password temporal de argo para poder accederlo desde La Linea De Comandos.
 ```
@@ -64,6 +59,8 @@ export PASS=$(kubectl \
 
 
 ## Creando Aplicacion y Proyecto de ArgoCD
+En el repo, cuento con un app.yaml y un project.yaml custom, donde le indico a Argo en que repositorio observar mis cambios. Despues de inspeccionar estos archivos yaml, hagamos kubectl apply para crear la app y el proyecto.
+
 ```
 kubectl apply -f app.yaml
 kubectl apply -f project.yaml
@@ -75,8 +72,17 @@ https://slugs.do-api.dev/
 
 
 ## APPENDIX
+#### Para borrar crossplane con helm
+```bash
+helm uninstall crossplane -n crossplane-system
+```
 
-#### Para borrar argocd
+#### Para borrar argocd con kustomize
+```
+kubectl kustomize argo-deployment/ | kubectl delete -f -
+```
+
+#### Para borrar argocd manualmente
 
 ```
 kubectl delete namespace argocd
