@@ -62,6 +62,37 @@ kubectl apply -f project.yaml
 ```
 
 
-
 ## Digital Ocean API slugs
 https://slugs.do-api.dev/
+
+
+## APPENDIX
+
+#### Para borrar argocd
+
+```
+kubectl delete namespace argocd
+```
+Es posible que el namespace se quede en "terminating", en dado caso, se puede aplicar este finalizador directamente en la API de argocd
+```
+kubectl get namespace argocd -o json | jq 'del(.spec.finalizers[])' | curl -k -H "Content-Type: application/json" -X PUT --data-binary @- http://127.0.0.1:8001/api/v1/namespaces/argocd/finalize
+```
+
+
+#### para borrar los crds de argo
+```
+kubectl delete crd applications.argoproj.io applicationsets.argoproj.io appprojects.argoproj.io
+```
+
+en caso de que se queden atorados, usar
+```
+kubectl get crd appprojects.argoproj.io -o json | jq '.metadata.finalizers=null' | kubectl apply -f -
+```
+
+y
+
+```
+kubectl get crd applications.argoproj.io -o json | jq '.metadata.finalizers=null' | kubectl apply -f -
+```
+
+respectivamente.
