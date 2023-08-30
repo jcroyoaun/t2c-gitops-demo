@@ -41,6 +41,14 @@ kubectl create secret generic digitalocean-creds --from-literal=access-token=[AP
 ```
 
 
+### Paso opcional
+```
+helm upgrade --install ingress-nginx ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --namespace ingress-nginx --create-namespace
+```
+
+
 ### Instalando ArgoCD
 ```bash
 kubectl kustomize argo-deployment/ | kubectl apply -f -
